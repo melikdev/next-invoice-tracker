@@ -3,15 +3,14 @@ import { auth } from '@clerk/nextjs/server';
 import { notFound } from 'next/navigation';
 import Invoice from './Invoice';
 
-export default async function SingleInvoice({
-  params,
-}: {
-  params: { invoiceId: string };
-}) {
+type Params = Promise<{ invoiceId: string }>;
+
+export default async function SingleInvoice(props: { params: Params }) {
   const { userId } = await auth();
   if (!userId) return;
 
-  const { invoiceId } = await params;
+  const params = await props.params;
+  const invoiceId = params.invoiceId;
 
   const invoice = await prisma.invoices.findUnique({
     where: {

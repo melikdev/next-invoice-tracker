@@ -78,7 +78,28 @@ export default async function Home() {
                   </TableCell>
                   <TableCell className="text-center">
                     <Link href={`/invoice/${invoice.id}`}>
-                      <Badge className="rounded-full">{invoice.status}</Badge>
+                      <Badge
+                        className={`
+                        ${
+                          invoice.status === 'PAID' &&
+                          'bg-green-100 text-green-800'
+                        }
+                        ${
+                          invoice.status === 'OPEN' &&
+                          'bg-blue-100 text-blue-800'
+                        }
+                        ${
+                          invoice.status === 'UNCOLLECTIBLE' &&
+                          'bg-red-100 text-red-800'
+                        }
+                        ${
+                          invoice.status === 'VOID' &&
+                          'bg-zinc-100 text-zinc-800'
+                        }
+                        `}
+                      >
+                        {invoice.status}
+                      </Badge>
                     </Link>
                   </TableCell>
                   <TableCell className="text-right">

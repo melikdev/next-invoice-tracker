@@ -36,7 +36,7 @@ export async function updateStatusAction(formData: FormData) {
   const id = formData.get('id') as string;
   const status = formData.get('status') as Status;
 
-  const results = await prisma.invoices.update({
+  await prisma.invoices.update({
     where: { id, userId },
     data: { status },
   });
@@ -51,7 +51,7 @@ export async function deleteInvoiceAction(formData: FormData) {
 
   const id = formData.get('id') as string;
 
-  const results = await prisma.invoices.delete({
+  await prisma.invoices.delete({
     where: { id },
   });
 

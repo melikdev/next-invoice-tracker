@@ -53,9 +53,9 @@ export default function Invoice({ invoice }: InvoiceProps) {
   return (
     <main className="h-full w-full">
       <Container>
-        <div className="flex justify-between mb-8">
-          <h1 className="flex items-center gap-4 font-semibold text-3xl">
-            {`Invoice ${invoice?.id}`}
+        <div className="flex flex-col md:flex-row gap-5 justify-between mb-8">
+          <h1 className="flex gap-4 font-semibold text-3xl">
+            Invoice
             <Badge
               className={cn(
                 'rounded-full',
